@@ -43,7 +43,6 @@ import com.github.juliarn.npclib.common.event.DefaultAttackNpcEvent;
 import com.github.juliarn.npclib.common.event.DefaultInteractNpcEvent;
 import com.github.juliarn.npclib.common.util.EventDispatcher;
 import com.github.retrooper.packetevents.PacketEvents;
-import com.github.retrooper.packetevents.PacketEventsAPI;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import com.github.retrooper.packetevents.event.SimplePacketListenerAbstract;
 import com.github.retrooper.packetevents.event.simple.PacketPlayReceiveEvent;
@@ -77,7 +76,6 @@ import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerPl
 import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSpawnPlayer;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.reflect.TypeToken;
-import io.github.retrooper.packetevents.factory.spigot.SpigotPacketEventsBuilder;
 import io.github.retrooper.packetevents.util.SpigotReflectionUtil;
 import java.lang.reflect.Type;
 import java.util.AbstractMap;
@@ -438,6 +436,7 @@ final class PacketEventsPacketAdapter implements PlatformPacketAdapter<World, Pl
   @Override
   public void initialize(@NotNull Platform<World, Player, ItemStack, Plugin> platform) {
     // build and initialize the packet events api
+    /*
     PacketEventsAPI<Plugin> packetEventsApi = SpigotPacketEventsBuilder.buildNoCache(
       platform.extension(),
       PACKET_EVENTS_SETTINGS);
@@ -448,13 +447,14 @@ final class PacketEventsPacketAdapter implements PlatformPacketAdapter<World, Pl
     // instead of passing the created instance around, which leaves us
     // no choice than setting it as well :/
     PacketEvents.setAPI(packetEventsApi);
+    */
 
     // store the packet player manager & server version
-    this.packetPlayerManager = packetEventsApi.getPlayerManager();
-    this.serverVersion = packetEventsApi.getServerManager().getVersion();
+    this.packetPlayerManager = PacketEvents.getAPI().getPlayerManager();
+    this.serverVersion = PacketEvents.getAPI().getServerManager().getVersion();
 
     // add the packet listener
-    packetEventsApi.getEventManager().registerListener(new NpcUsePacketAdapter(platform));
+    PacketEvents.getAPI().getEventManager().registerListener(new NpcUsePacketAdapter(platform));
   }
 
   private static final class NpcUsePacketAdapter extends SimplePacketListenerAbstract {
