@@ -1,4 +1,4 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 /*
  * This file is part of npc-lib, licensed under the MIT License (MIT).
@@ -28,6 +28,8 @@ dependencies {
   api(projects.api)
 }
 
+/*
 tasks.withType<ShadowJar> {
   dependsOn(":api:shadowJar")
 }
+*/

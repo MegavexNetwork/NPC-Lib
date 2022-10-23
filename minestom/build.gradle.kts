@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 dependencies {
   api(projects.api)
@@ -34,9 +34,11 @@ tasks.withType<JavaCompile> {
   options.release.set(17)
 }
 
+/*
 tasks.withType<ShadowJar> {
   dependsOn(":common:shadowJar")
 
   minimize()
   relocate("com.google.gson", "com.github.juliarn.npclib.relocate.gson")
 }
+*/

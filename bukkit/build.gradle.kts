@@ -22,19 +22,20 @@
  * THE SOFTWARE.
  */
 
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 dependencies {
   api(projects.api)
   implementation(libs.paperLib)
   implementation(projects.common)
-  implementation(libs.packetEvents)
+  compileOnly(libs.packetEvents)
 
   compileOnly(libs.netty)
   compileOnly(libs.paper)
   compileOnly(libs.protocolLib)
 }
 
+/*
 tasks.withType<ShadowJar> {
   dependsOn(":common:shadowJar")
 
@@ -44,3 +45,4 @@ tasks.withType<ShadowJar> {
   relocate("io.github.retrooper", "com.github.juliarn.npclib.relocate.io.packetevents")
   relocate("com.github.retrooper", "com.github.juliarn.npclib.relocate.com.packetevents")
 }
+*/

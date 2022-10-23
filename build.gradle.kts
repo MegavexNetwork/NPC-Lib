@@ -23,11 +23,11 @@
  */
 
 import com.diffplug.gradle.spotless.SpotlessExtension
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
   alias(libs.plugins.spotless)
-  alias(libs.plugins.shadow) apply false
+  // alias(libs.plugins.shadow) apply false
 }
 
 defaultTasks("build", "shadowJar")
@@ -50,7 +50,7 @@ subprojects {
   apply(plugin = "java-library")
   apply(plugin = "maven-publish")
   apply(plugin = "com.diffplug.spotless")
-  apply(plugin = "com.github.johnrengelman.shadow")
+  // apply(plugin = "com.github.johnrengelman.shadow")
 
   dependencies {
     "compileOnly"(rootProject.libs.annotations)
@@ -66,9 +66,11 @@ subprojects {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
   }
 
+  /*
   tasks.withType<ShadowJar> {
     archiveClassifier.set(null as String?)
   }
+  */
 
   tasks.withType<JavaCompile>().configureEach {
     // options
