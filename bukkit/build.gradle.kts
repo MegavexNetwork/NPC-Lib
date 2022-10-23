@@ -27,7 +27,7 @@
 dependencies {
   api(projects.api)
   implementation(libs.paperLib)
-  implementation(projects.common)
+  api(projects.common)
   compileOnly(libs.packetEvents)
 
   compileOnly(libs.netty)
