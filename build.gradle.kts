@@ -80,6 +80,11 @@ subprojects {
   /*
   tasks.withType<ShadowJar> {
     archiveClassifier.set(null as String?)
+    dependencies {
+      // excludes the META-INF directory, module infos & html files of all dependencies
+      // this includes for example maven lib files & multi-release module-json files
+      exclude("META-INF/**", "**/*.html", "module-info.*")
+    }
   }
   */
 
@@ -104,7 +109,7 @@ subprojects {
   }
 
   extensions.configure<CheckstyleExtension> {
-    toolVersion = "10.3.4"
+    toolVersion = "10.5.0"
   }
 
   extensions.configure<SpotlessExtension> {
