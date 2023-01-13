@@ -1,7 +1,7 @@
 /*
  * This file is part of npc-lib, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2022 Julian M., Pasqual K. and contributors
+ * Copyright (c) 2022-2023 Julian M., Pasqual K. and contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,30 +22,14 @@
  * THE SOFTWARE.
  */
 
-// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 dependencies {
-  api(projects.api)
+  api(projects.npcLibApi)
+  implementation(projects.npcLibCommon)
+
   implementation(libs.paperLib)
-  api(projects.common)
   compileOnly(libs.packetEvents)
 
   compileOnly(libs.netty)
   compileOnly(libs.paper)
   compileOnly(libs.protocolLib)
 }
-
-/*
-tasks.withType<ShadowJar> {
-  dependsOn(":common:shadowJar")
-
-  relocate("com.google.gson", "com.github.juliarn.npclib.relocate.gson")
-  relocate("io.papermc.lib", "com.github.juliarn.npclib.relocate.paperlib")
-  relocate("io.github.retrooper", "com.github.juliarn.npclib.relocate.io.packetevents")
-  relocate("com.github.retrooper", "com.github.juliarn.npclib.relocate.com.packetevents")
-
-  dependencies {
-    exclude("plugin.yml")
-  }
-}
-*/

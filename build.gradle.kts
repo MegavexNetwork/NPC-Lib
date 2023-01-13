@@ -1,7 +1,7 @@
 /*
  * This file is part of npc-lib, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2022 Julian M., Pasqual K. and contributors
+ * Copyright (c) 2022-2023 Julian M., Pasqual K. and contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,14 +23,12 @@
  */
 
 import com.diffplug.gradle.spotless.SpotlessExtension
-// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
   alias(libs.plugins.spotless)
-  // alias(libs.plugins.shadow) apply false
 }
 
-defaultTasks("build", "shadowJar")
+defaultTasks("build")
 
 allprojects {
   version = "3.0.0-SNAPSHOT"
@@ -61,7 +59,6 @@ subprojects {
   apply(plugin = "java-library")
   apply(plugin = "maven-publish")
   apply(plugin = "com.diffplug.spotless")
-  // apply(plugin = "com.github.johnrengelman.shadow")
 
   dependencies {
     "compileOnly"(rootProject.libs.annotations)
@@ -76,17 +73,6 @@ subprojects {
     from(rootProject.file("license.txt"))
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
   }
-
-  /*
-  tasks.withType<ShadowJar> {
-    archiveClassifier.set(null as String?)
-    dependencies {
-      // excludes the META-INF directory, module infos & html files of all dependencies
-      // this includes for example maven lib files & multi-release module-json files
-      exclude("META-INF/**", "**/*.html", "module-info.*")
-    }
-  }
-  */
 
   tasks.withType<JavaCompile>().configureEach {
     // options
@@ -109,7 +95,7 @@ subprojects {
   }
 
   extensions.configure<CheckstyleExtension> {
-    toolVersion = "10.5.0"
+    toolVersion = "10.6.0"
   }
 
   extensions.configure<SpotlessExtension> {

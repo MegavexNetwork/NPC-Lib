@@ -1,7 +1,7 @@
 /*
  * This file is part of npc-lib, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2022 Julian M., Pasqual K. and contributors
+ * Copyright (c) 2023 Julian M., Pasqual K. and contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,14 +22,6 @@
  * THE SOFTWARE.
  */
 
-// import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
 dependencies {
   compileOnly(libs.gson)
 }
-
-/*
-tasks.withType<ShadowJar> {
-  relocate("com.google.gson", "com.github.juliarn.npclib.relocate.gson")
-}
-*/
